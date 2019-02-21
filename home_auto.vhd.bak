@@ -1,0 +1,248 @@
+
+-----------------------------------------------------------------------------------------------
+
+		
+	entity home_auto is port
+	(
+		hex0 : out bit_vector(0 to 6);
+		hex0 : out bit_vector(0 to 6);
+		hex0 : out bit_vector(0 to 6);
+		hex0 : out bit_vector(0 to 6);
+		hex0 : out bit_vector(0 to 6);
+		hex0 : out bit_vector(0 to 6);
+		hex0 : out bit_vector(0 to 6);
+		hex0 : out bit_vector(0 to 6);
+		rx : in bit;
+		clk : in bit;
+		
+	);
+	end home_auto;
+	
+	architecture hardware of home_auto2 is
+	signal q_signal : bit_vector( 77 downto 0);
+	signal counter : integer := 0;
+	signal control_1 : integer := 0;
+   signal control_2 : integer := 1;
+		
+	begin
+----------------------------
+	rx_process : process
+	begin
+	
+	wait until rx'event and rx='1' and control_1/=control_2;
+		
+		control_1<= control_1 + 1;
+				
+	end process rx_process;
+----------------------------
+	clk_process : process(clk)
+	variable prd : integer := 0;
+	
+	begin	
+		
+		if(clk'event and clk='1' and control_1=control_2) then
+			prd := prd + 1;
+			
+			if(prd=5208) then
+				prd:=0;
+			end if;
+			
+			if(prd = 2604) then
+					
+					q_signal(77)<=rx;
+					q_signal(76)<=q_signal(77);
+					q_signal(75)<=q_signal(76);
+					q_signal(74)<=q_signal(75);
+					q_signal(73)<=q_signal(74);
+					q_signal(72)<=q_signal(73);
+					q_signal(71)<=q_signal(72);
+					q_signal(70)<=q_signal(71);
+					q_signal(69)<=q_signal(70);
+					q_signal(68)<=q_signal(69);
+					q_signal(67)<=q_signal(68);
+					q_signal(66)<=q_signal(67);
+					q_signal(65)<=q_signal(66);
+					q_signal(64)<=q_signal(65);
+					q_signal(63)<=q_signal(64);
+					q_signal(62)<=q_signal(63);
+					q_signal(61)<=q_signal(62);
+					q_signal(60)<=q_signal(61);
+					q_signal(59)<=q_signal(60);
+					q_signal(58)<=q_signal(59);
+					q_signal(57)<=q_signal(58);
+					q_signal(56)<=q_signal(57);
+					q_signal(55)<=q_signal(56);
+					q_signal(54)<=q_signal(55);
+					q_signal(53)<=q_signal(54);
+					q_signal(52)<=q_signal(53);
+					q_signal(51)<=q_signal(52);
+					q_signal(50)<=q_signal(51);
+					q_signal(49)<=q_signal(50);
+					q_signal(48)<=q_signal(49);
+					q_signal(47)<=q_signal(48);
+					q_signal(46)<=q_signal(47);
+					q_signal(45)<=q_signal(46);
+					q_signal(44)<=q_signal(45);
+					q_signal(43)<=q_signal(44);
+					q_signal(42)<=q_signal(43);
+					q_signal(41)<=q_signal(42);
+					q_signal(40)<=q_signal(41);
+					q_signal(39)<=q_signal(40);
+					q_signal(38)<=q_signal(39);
+					q_signal(37)<=q_signal(38);
+					q_signal(36)<=q_signal(37);
+					q_signal(35)<=q_signal(36);
+					q_signal(34)<=q_signal(35);
+					q_signal(33)<=q_signal(34);
+					q_signal(32)<=q_signal(33);
+					q_signal(31)<=q_signal(32);
+					q_signal(30)<=q_signal(31);
+					q_signal(29)<=q_signal(30);
+					q_signal(28)<=q_signal(29);
+					q_signal(27)<=q_signal(28);
+					q_signal(26)<=q_signal(27);
+					q_signal(25)<=q_signal(26);
+					q_signal(24)<=q_signal(25);
+					q_signal(23)<=q_signal(24);
+					q_signal(22)<=q_signal(23);
+					q_signal(21)<=q_signal(22);
+					q_signal(20)<=q_signal(21);
+					q_signal(19)<=q_signal(20);
+					q_signal(18)<=q_signal(19);
+					q_signal(17)<=q_signal(18);
+					q_signal(16)<=q_signal(17);
+					q_signal(15)<=q_signal(16);
+					q_signal(14)<=q_signal(15);
+					q_signal(13)<=q_signal(14);
+					q_signal(12)<=q_signal(13);
+					q_signal(11)<=q_signal(12);
+					q_signal(10)<=q_signal(11);
+					q_signal(9)<=q_signal(10);
+					q_signal(8)<=q_signal(9);
+					q_signal(7)<=q_signal(8);
+					q_signal(6)<=q_signal(7);
+					q_signal(5)<=q_signal(6);
+					q_signal(4)<=q_signal(5);
+					q_signal(3)<=q_signal(4);
+					q_signal(2)<=q_signal(3);
+					q_signal(1)<=q_signal(2);
+					q_signal(0)<=q_signal(1);
+					
+				counter <= counter+1;
+			
+				if(counter=78) then 
+					control_2<= control_2 +1;
+					counter<=0;
+					
+				end if;
+			end if;
+		end if;
+				
+	end process clk_process;
+----------------------------
+--	lamp_process : process(clk)
+--	begin
+--		
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000") then
+--		lamp1<='0';
+--		lamp2<='0';
+--		lamp3<='0';
+--		lamp4<='0';
+--		lamp5<='0';
+--		lamp6<='0';
+--		lamp7<='0';
+--		lamp8<='0';
+--		
+--		
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100111010110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		1    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp1<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110011101011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     1   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp1<='0';
+--		
+--		end if;
+--		
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100110110110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		2    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp2<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110011011011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     2   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp2<='0';
+--		end if;
+--		
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100110010110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		2    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp3<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110011001011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     2   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp3<='0';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100101110110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		2    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp4<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110010111011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     2   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp4<='0';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100101010110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		2    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp5<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110010101011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     2   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp5<='0';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100100110110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		2    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp6<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110010011011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     2   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp6<='0';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100100010110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		2    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp7<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110010001011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     2   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp7<='0';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000001100011110110111111010001101101001101010100110111010010001101001101010100111001010011110") then
+--		 ----		2    -- espaço --   r    --    e   --    d   --    n   --    e   --    c   --    a  
+-- 		lamp8<='1';
+--		end if;
+--		
+--		if(q_signal="00000000000000000000000000000000000000000000000000110001111011011111101000110110100111101010011000101001111010100011111010011110") then
+--		            ---     2   -- espaço --   r    --    a   --    g   --    a   --    p   --    a   
+--		lamp8<='0';
+--		
+--		end if;
+--
+--	end process lamp_process;
+	----------------------------
+
+	
+end hardware;
